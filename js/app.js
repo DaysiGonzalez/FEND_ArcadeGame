@@ -57,7 +57,13 @@ Player.prototype.handleInput = function(direction){
       this.x = (this.x - 100) < 0 ? this.x = this.x : this.x -= 100;
       break;
     case 'up':
-      this.y = (this.y - 85) < 60 ? this.y = 1 : this.y -= 85;
+    console.log(this.y);
+      this.y -= 85;
+      if (this.y <= 50) {
+        this.y = 1;
+        this.x = 200;
+        this.y = 400;
+      }
       break;
     case 'down':
       this.y = this.y = (this.y + 85) > 400 ? this.y = this.y : this.y += 85;;
