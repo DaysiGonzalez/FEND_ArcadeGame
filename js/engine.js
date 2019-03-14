@@ -44,8 +44,8 @@ var Engine = (function(global) {
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
-        update(dt);
-        render();
+         update(dt);
+         render();
 
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
@@ -93,7 +93,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.update();
+        //player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -153,7 +153,7 @@ var Engine = (function(global) {
             enemy.render();
         });
 
-        player.render();
+        //player.render();
     }
 
     /* This function does nothing but it could have been a good place to
