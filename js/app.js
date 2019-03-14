@@ -1,4 +1,5 @@
 // Enemies our player must avoid
+
 var Enemy = function(x,y,s) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -50,16 +51,16 @@ Player.prototype.render = function(){
 Player.prototype.handleInput = function(direction){
   switch (direction) {
     case 'right':
-      this.x += 100;
+      this.x = (this.x + 100) == 500 ? this.x = this.x : this.x += 100;
       break;
     case 'left':
-      this.x -= 100;
+      this.x = (this.x - 100) < 0 ? this.x = this.x : this.x -= 100;
       break;
     case 'up':
-      this.y -= 85;
+      this.y = (this.y - 85) < 60 ? this.y = 1 : this.y -= 85;
       break;
     case 'down':
-      this.y += 85;
+      this.y = this.y = (this.y + 85) > 400 ? this.y = this.y : this.y += 85;;
       break;
     default:
 
