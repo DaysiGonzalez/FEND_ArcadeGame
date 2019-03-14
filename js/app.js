@@ -17,12 +17,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-console.log("updating");
     this.x += this.speed * dt;
     if (this.x > 505){
-      console.log("out");
       this.x = -100;
-      this.speed = (Math.random()*60);
+      this.speed = (Math.random()* (300 - 60) + 60);
     }
 };
 
@@ -39,9 +37,9 @@ Enemy.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy(-100,60,(Math.random()*60));
-let enemy2 = new Enemy(-100,140,(Math.random()*60));
-let enemy3 = new Enemy(-100,230,(Math.random()*60));
+let enemy1 = new Enemy(-100,60,(Math.random()* (300 - 60) + 60));
+let enemy2 = new Enemy(-100,140,(Math.random()* (300 - 60) + 60));
+let enemy3 = new Enemy(-100,230,(Math.random()* (300 - 60) + 60));
 let allEnemies = [enemy1, enemy2, enemy3];
 
 
