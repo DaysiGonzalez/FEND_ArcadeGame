@@ -32,10 +32,9 @@ Enemy.prototype.update = function(dt) {
     const YDownRange = this.y + 60;
 
     if (player.x >= XLeftRange && player.x <= XRightRange && player.y >= YUpRange && player.y <= YDownRange){
-      console.log('collision');
       player.resetPosition();
       player.score = 0;
-      console.log(player.score);
+      player.setScore();
     }
 };
 
@@ -52,6 +51,7 @@ var Player = function(){
   this.x = 200;
   this.y = 400;
   this.score = 0;
+  this.setScore();
 }
 
 Player.prototype.update = function(dt){
@@ -67,6 +67,10 @@ Player.prototype.resetPosition = function(){
   this.y = 400;
 }
 
+Player.prototype.setScore = function(){
+  document.getElementById("player-score").innerHTML = "Score: " + this.score;
+}
+
 Player.prototype.handleInput = function(direction){
   switch (direction) {
     case 'right':
@@ -76,12 +80,11 @@ Player.prototype.handleInput = function(direction){
       this.x = (this.x - 100) < 0 ? this.x = this.x : this.x -= 100;
       break;
     case 'up':
-    console.log(this.y);
       this.y -= 85;
       if (this.y <= 50) {
         this.y = 1;
-        ++this.score;
-        console.log(this.score);
+        this.score++;
+        this.setScore();
         this.resetPosition();
       }
       break;
