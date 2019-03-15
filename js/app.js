@@ -33,8 +33,9 @@ Enemy.prototype.update = function(dt) {
 
     if (player.x >= XLeftRange && player.x <= XRightRange && player.y >= YUpRange && player.y <= YDownRange){
       console.log('collision');
-      player.x = 200;
-      player.y = 400;
+      player.resetPosition();
+      player.score = 0;
+      console.log(player.score);
     }
 };
 
@@ -50,6 +51,7 @@ var Player = function(){
   this.sprite = 'images/char-boy.png';
   this.x = 200;
   this.y = 400;
+  this.score = 0;
 }
 
 Player.prototype.update = function(dt){
@@ -58,6 +60,11 @@ Player.prototype.update = function(dt){
 
 Player.prototype.render = function(){
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+Player.prototype.resetPosition = function(){
+  this.x = 200;
+  this.y = 400;
 }
 
 Player.prototype.handleInput = function(direction){
@@ -73,8 +80,9 @@ Player.prototype.handleInput = function(direction){
       this.y -= 85;
       if (this.y <= 50) {
         this.y = 1;
-        this.x = 200;
-        this.y = 400;
+        ++this.score;
+        console.log(this.score);
+        this.resetPosition();
       }
       break;
     case 'down':
