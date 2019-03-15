@@ -24,6 +24,18 @@ Enemy.prototype.update = function(dt) {
       this.x = -100;
       this.speed = (Math.random()* (300 - 60) + 60);
     }
+
+    //check collisions
+    const XRightRange = this.x + 70;
+    const XLeftRange = this.x - 70;
+    const YUpRange = this.y - 60;
+    const YDownRange = this.y + 60;
+
+    if (player.x >= XLeftRange && player.x <= XRightRange && player.y >= YUpRange && player.y <= YDownRange){
+      console.log('collision');
+      player.x = 200;
+      player.y = 400;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
